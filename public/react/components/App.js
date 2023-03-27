@@ -7,13 +7,16 @@ import apiURL from '../api';
 export const App = () => {
 
 	const [pages, setPages] = useState([]);
-	const [status, setStatus] = useState('closed');
-
-	const handleClick = async () => {
-		const res = await fetch('/wiki/:slug');
-		const data = await res.json();
-		setStatus(!status);
-	}
+	const [articleData, setArticleData] = useState(null);
+const handleClick = async () => {
+	fetch('/wiki/:slug')
+	.then(response => response.json())
+	.then(data => {
+		setArticleData(data);
+	}) .catch(error => {
+		console.error(error)
+	})
+}
 
 	async function fetchPages(){
 		try {
