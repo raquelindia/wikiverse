@@ -7,6 +7,13 @@ import apiURL from '../api';
 export const App = () => {
 
 	const [pages, setPages] = useState([]);
+	const [status, setStatus] = useState('closed');
+
+	const handleClick = async () => {
+		const res = await fetch('/wiki/:slug');
+		const data = await res.json();
+		setStatus(!status);
+	}
 
 	async function fetchPages(){
 		try {
@@ -27,6 +34,7 @@ export const App = () => {
       <h1>WikiVerse</h1>
 			<h2>An interesting 📚</h2>
 			<PagesList pages={pages} />
+			<button className="button-styles">ADD A PAGE</button>
 		</main>
 	)
 }

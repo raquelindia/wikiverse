@@ -13,3 +13,12 @@ main {
   font-size: 100%;
 }
 
+.button-styles {
+  height: 4%;
+  width: 10%;
+  background: darkgrey;
+  border: none;
+  border-radius: 2px;
+  color: white;
+}
+
